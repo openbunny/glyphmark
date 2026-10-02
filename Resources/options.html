@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Glyphmark settings</title>
+    <link rel="stylesheet" href="generated/theme/css/tokens.css" />
+    <link rel="stylesheet" href="generated/theme/css/extension-aliases.css" />
+    <link rel="stylesheet" href="generated/theme/css/fonts.css" />
+    <link rel="stylesheet" href="generated/theme/css/extension-base.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Icons</h1>
+
+      <section aria-labelledby="enabled-heading">
+        <h2 id="enabled-heading">Enabled</h2>
+        <label class="row">
+          <input type="checkbox" id="global-enabled" />
+          Enabled
+        </label>
+      </section>
+
+      <section aria-labelledby="sites-heading">
+        <fieldset>
+          <legend id="sites-heading">Sites</legend>
+          <div id="site-list"></div>
+        </fieldset>
+      </section>
+
+      <section aria-labelledby="appearance-heading">
+        <h2 id="appearance-heading">Appearance</h2>
+        <div class="row">
+          <label for="icon-size">Icon size</label>
+          <select id="icon-size">
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="extraLarge">Extra large</option>
+          </select>
+        </div>
+        <div class="row">
+          <label for="icon-pack">Icon pack</label>
+          <select id="icon-pack"></select>
+        </div>
+      </section>
+
+      <section aria-labelledby="mappings-heading">
+        <h2 id="mappings-heading">Mappings</h2>
+
+        <div class="mapping-group" data-field="customExtensions">
+          <h3>Extensions</h3>
+          <ul class="mapping-list" aria-live="polite"></ul>
+          <form class="mapping-form">
+            <label class="visually-hidden" for="customExtensions-key"
+              >Extension</label
+            >
+            <input
+              type="text"
+              id="customExtensions-key"
+              name="key"
+              placeholder="rs"
+              required
+            />
+            <label class="visually-hidden" for="customExtensions-value"
+              >Icon key</label
+            >
+            <input
+              type="text"
+              id="customExtensions-value"
+              name="value"
+              placeholder="rust"
+              required
+            />
+            <img
+              class="preview"
+              src="data:,"
+              alt=""
+              aria-hidden="true"
+              hidden
+            />
+            <button type="submit">Add</button>
+            <p class="error" role="alert" hidden></p>
+          </form>
+        </div>
+
+        <div class="mapping-group" data-field="customFileNames">
+          <h3>Filenames</h3>
+          <ul class="mapping-list" aria-live="polite"></ul>
+          <form class="mapping-form">
+            <label class="visually-hidden" for="customFileNames-key"
+              >Filename</label
+            >
+            <input
+              type="text"
+              id="customFileNames-key"
+              name="key"
+              placeholder="Dockerfile"
+              required
+            />
+            <label class="visually-hidden" for="customFileNames-value"
+              >Icon key</label
+            >
+            <input
+              type="text"
+              id="customFileNames-value"
+              name="value"
+              placeholder="docker"
+              required
+            />
+            <img
+              class="preview"
+              src="data:,"
+              alt=""
+              aria-hidden="true"
+              hidden
+            />
+            <button type="submit">Add</button>
+            <p class="error" role="alert" hidden></p>
+          </form>
+        </div>
+
+        <div class="mapping-group" data-field="customFolderNames">
+          <h3>Folders</h3>
+          <ul class="mapping-list" aria-live="polite"></ul>
+          <form class="mapping-form">
+            <label class="visually-hidden" for="customFolderNames-key"
+              >Folder name</label
+            >
+            <input
+              type="text"
+              id="customFolderNames-key"
+              name="key"
+              placeholder="src"
+              required
+            />
+            <label class="visually-hidden" for="customFolderNames-value"
+              >Icon key</label
+            >
+            <input
+              type="text"
+              id="customFolderNames-value"
+              name="value"
+              placeholder="folder-src"
+              required
+            />
+            <img
+              class="preview"
+              src="data:,"
+              alt=""
+              aria-hidden="true"
+              hidden
+            />
+            <button type="submit">Add</button>
+            <p class="error" role="alert" hidden></p>
+          </form>
+        </div>
+      </section>
+
+      <button id="reset" type="button">Reset</button>
+
+      <footer>
+        <p>
+          <a
+            href="https://github.com/material-extensions/vscode-material-icon-theme"
+            >Material Icon Theme</a
+          >, MIT licence
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+name: Forge request
+description: Support icons on another source-hosting site
+title: "[forge]: "
+labels: ["type/feature", "area/providers", "status/needs-triage"]
+body:
+  - type: input
+    id: host
+    attributes:
+      label: Host
+      description: The site's hostname and the forge software it runs.
+      placeholder: git.example.org (Forgejo)
+    validations:
+      required: true
+  - type: textarea
+    id: listing
+    attributes:
+      label: File listing markup
+      description: The HTML of one directory listing row, with repository names replaced by placeholders.
+    validations:
+      required: true
+  - type: textarea
+    id: self-hosted
+    attributes:
+      label: Hosting
+      description: Whether the host is a public instance. The manifest lists fixed hosts only, so a self-hosted instance cannot be matched.
+    validations:
+      required: false

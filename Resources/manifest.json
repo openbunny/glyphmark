@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Glyphmark",
+  "version": "0.1.0",
+  "description": "Material Icon Theme glyphs for source-hosting sites, as a Safari web extension.",
+  "homepage_url": "https://github.com/openbunny/glyphmark",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://github.com/*",
+    "https://bitbucket.org/*",
+    "https://dev.azure.com/*",
+    "https://*.visualstudio.com/*",
+    "https://gitlab.com/*",
+    "https://salsa.debian.org/*",
+    "https://gitlab.gnome.org/*",
+    "https://invent.kde.org/*",
+    "https://gitlab.freedesktop.org/*",
+    "https://git.drupalcode.org/*",
+    "https://gitlab.archlinux.org/*",
+    "https://gitlab.torproject.org/*",
+    "https://framagit.org/*",
+    "https://code.videolan.org/*",
+    "https://gitea.com/*",
+    "https://gitee.com/*",
+    "https://sourceforge.net/*",
+    "https://codeberg.org/*",
+    "https://tangled.org/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/*",
+        "https://bitbucket.org/*",
+        "https://dev.azure.com/*",
+        "https://*.visualstudio.com/*",
+        "https://gitlab.com/*",
+        "https://salsa.debian.org/*",
+        "https://gitlab.gnome.org/*",
+        "https://invent.kde.org/*",
+        "https://gitlab.freedesktop.org/*",
+        "https://git.drupalcode.org/*",
+        "https://gitlab.archlinux.org/*",
+        "https://gitlab.torproject.org/*",
+        "https://framagit.org/*",
+        "https://code.videolan.org/*",
+        "https://gitea.com/*",
+        "https://gitee.com/*",
+        "https://sourceforge.net/*",
+        "https://codeberg.org/*",
+        "https://tangled.org/*"
+      ],
+      "js": ["content/main.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Icons"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'"
+  }
+}

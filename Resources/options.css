@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: var(--text-body);
+}
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+h1 {
+  font-size: var(--text-title);
+  margin: 0;
+}
+
+h2 {
+  font-size: var(--text-lead);
+  margin: 0 0 var(--space-2);
+}
+
+h3 {
+  font-size: var(--text-small);
+  margin: 0 0 var(--space-1);
+  color: var(--muted-foreground);
+}
+
+fieldset {
+  border: var(--border-width) solid var(--border);
+  padding: var(--space-3);
+}
+
+legend {
+  padding: 0 var(--space-1);
+  font-size: var(--text-lead);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+}
+
+label {
+  color: var(--foreground);
+}
+
+select,
+input[type="text"],
+input:not([type="checkbox"], [type="radio"]) {
+  background: var(--input);
+  color: var(--foreground);
+  border: var(--border-width) solid var(--border);
+  padding: var(--space-1) var(--space-2);
+  font: inherit;
+  font-size: var(--text-body);
+}
+
+button {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  font-size: var(--text-body);
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--ink);
+}
+
+.mapping-group {
+  margin-bottom: var(--space-4);
+}
+
+.mapping-list {
+  list-style: none;
+  margin: 0 0 var(--space-2);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mapping-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  background: var(--card);
+}
+
+.mapping-list img {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+.mapping-form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.mapping-form .preview {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+.error {
+  color: var(--destructive);
+  font-size: var(--text-small);
+  margin: var(--space-1) 0 0;
+  flex-basis: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

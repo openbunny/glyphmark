@@ -1,0 +1,11 @@
+a {
+  color: #3f7a13;
+  background: rgb(1 2 3);
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  outline-color: red;
+  font: 12px serif;
+  font-size: 12px;
+  padding: 4px;
+  margin: 0 8px;
+}

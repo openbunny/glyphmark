@@ -1,0 +1,47 @@
+glyphmark
+Copyright (c) 2026 OpenBunny
+
+The built extension and the companion app redistribute the following
+third-party works. Each licence requires its notice in every copy.
+
+material-icon-theme
+Copyright (c) 2025 Material Extensions
+https://github.com/material-extensions/vscode-material-icon-theme/blob/main/LICENSE
+The extension bundle contains the icon files the build selects from the
+package and ships the package's licence text as
+`generated/material-icon-theme-LICENSE.txt`. The package version is pinned in
+`package.json`. Some icons depict the logo of a product or service. Those
+logos remain the trademarks of their owners and appear only to identify file
+types and folders. The icon files in `node_modules/material-icon-theme/icons`
+list the full set.
+
+zod
+Copyright (c) 2025 Colin McDonnell
+https://github.com/colinhacks/zod/blob/main/LICENSE
+The content script and the extension pages bundle zod. The build keeps legal
+comments at the end of each bundle. The licence text is in the zod package.
+
+@openbunny/theme and OpenBunnyTheme
+Copyright (c) 2026 OpenBunny
+Licensed under the MIT License.
+The extension pages and the companion app take their colours, fonts and
+spacing from the OpenBunny theme library, and the build copies its CSS and fonts
+into `generated/theme`.
+
+Courier Prime
+Copyright 2015 The Courier Prime Project Authors
+Licensed under the SIL Open Font License, Version 1.1.
+https://github.com/quoteunquoteapps/CourierPrime
+The font files ship in the extension bundle as WOFF2 and in the companion app as
+TrueType, each beside its licence text (`OFL-CourierPrime.txt`).
+
+JetBrains Mono
+Copyright 2020 The JetBrains Mono Project Authors
+Licensed under the SIL Open Font License, Version 1.1.
+https://github.com/JetBrains/JetBrainsMono
+The font files ship in the extension bundle as WOFF2 and in the companion app as
+TrueType, each beside its licence text (`OFL-JetBrainsMono.txt`).
+
+The SIL Open Font License permits bundling and redistribution with software and
+forbids selling the font files by themselves. A modified font must not use the
+reserved font names.

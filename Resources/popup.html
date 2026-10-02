@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Glyphmark</title>
+    <link rel="stylesheet" href="generated/theme/css/tokens.css" />
+    <link rel="stylesheet" href="generated/theme/css/extension-aliases.css" />
+    <link rel="stylesheet" href="generated/theme/css/fonts.css" />
+    <link rel="stylesheet" href="generated/theme/css/extension-base.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Icons</h1>
+      <label class="row">
+        <input type="checkbox" id="global-enabled" />
+        Enabled
+      </label>
+      <label class="row" id="site-row" hidden>
+        <input type="checkbox" id="site-enabled" />
+        <span id="site-label">This site</span>
+      </label>
+      <button id="open-settings" type="button">Settings</button>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

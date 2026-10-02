@@ -1,0 +1,26 @@
+node_modules/
+
+# XcodeGen output; project.yml is the source of truth.
+/*.xcodeproj/
+
+# The icon generator's output, rebuilt from material-icon-theme on demand.
+/src/generated/
+
+# `bun run build` output: the bundled entry points and the icons and tokens it
+# copies into the extension's Resources.
+/Resources/content/
+/Resources/generated/
+/Resources/options.js
+/Resources/popup.js
+
+# Machine-local Personal Team; Safari will not load a sandboxed ad-hoc signature.
+/DeveloperTeam.xcconfig
+
+# xcodebuild output.
+/build/
+DerivedData/
+
+/coverage/
+*.tsbuildinfo
+
+*.xcresult/

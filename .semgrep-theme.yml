@@ -1,0 +1,79 @@
+rules:
+  - id: swift-theme-colour-literal
+    languages: [swift]
+    severity: ERROR
+    message: >-
+      A colour literal in Swift. Every colour comes from the OpenBunnyTheme package (`Color.foreground`, `Color.sprout`); a `Color(red:)`, `Color(white:)`, `Color(hue:)`, `Color(.sRGB, ...)` or `NSColor(...)` initialiser defines a colour of this app's own.
+    paths:
+      exclude:
+        - "/AppTests/**"
+    pattern-either:
+      - pattern: "Color(red: ..., green: ..., blue: ...)"
+      - pattern: "Color(.$SPACE, red: ..., green: ..., blue: ...)"
+      - pattern: "Color(white: ...)"
+      - pattern: "Color(.$SPACE, white: ...)"
+      - pattern: "Color(hue: ..., saturation: ..., brightness: ...)"
+      - pattern: "NSColor(red: ..., green: ..., blue: ..., alpha: ...)"
+      - pattern: "NSColor(srgbRed: ..., green: ..., blue: ..., alpha: ...)"
+      - pattern: "NSColor(white: ..., alpha: ...)"
+  - id: swift-theme-font-literal
+    languages: [swift]
+    severity: ERROR
+    message: >-
+      A font literal in Swift. Fonts come from the OpenBunnyUI `Font.theme*` values; `Font.system`, a named `Font.custom` and the system text styles (`.caption`, `.body`) bypass the theme's families and its registration-failure handling.
+    pattern-either:
+      - pattern: "Font.system(...)"
+      - pattern: "$V.font(.system(...))"
+      - pattern: "Font.custom($NAME, ...)"
+      - pattern: "NSFont($...ARGS)"
+      - patterns:
+          - pattern: "$V.font(.$STYLE)"
+          - metavariable-regex:
+              metavariable: $STYLE
+              regex: "^(largeTitle|title|title2|title3|headline|subheadline|body|callout|footnote|caption|caption2)$"
+  - id: swift-theme-radius-literal
+    languages: [swift]
+    severity: ERROR
+    message: >-
+      A rounded corner in Swift. Every theme radius is 0, so a corner radius defines a radius of this app's own. Use `Rectangle()`.
+    pattern-either:
+      - pattern: "$V.cornerRadius(...)"
+      - pattern: "RoundedRectangle(...)"
+      - pattern: "UnevenRoundedRectangle(...)"
+      - pattern: "Capsule(...)"
+  - id: swift-theme-spacing-literal
+    languages: [swift]
+    severity: ERROR
+    message: >-
+      A numeric spacing literal in Swift. Spacing comes from the OpenBunnyUI `Spacing` values; a number passed to `.padding` or to a stack's `spacing:` defines a spacing of this app's own.
+    paths:
+      exclude:
+        - "/AppTests/**"
+    patterns:
+      - pattern-either:
+          - pattern: "$V.padding($N)"
+          - pattern: "$V.padding($E, $N)"
+          - pattern: "$S(spacing: $N)"
+          - pattern: "$S(alignment: $A, spacing: $N)"
+          - pattern: "$S(spacing: $N) { ... }"
+          - pattern: "$S(alignment: $A, spacing: $N) { ... }"
+      - metavariable-regex:
+          metavariable: $N
+          regex: "^[0-9.]+$"
+  - id: ts-theme-literal
+    languages: [typescript]
+    severity: ERROR
+    message: >-
+      A colour, font-family or radius literal in TypeScript. Read the value from `@openbunny/theme/tokens` or style through a theme CSS custom property.
+    paths:
+      include:
+        - "/src/**"
+        - "/semgrep-fixtures/theme/**"
+      exclude:
+        - "/src/generated/**"
+        - "**/*.test.ts"
+    pattern-either:
+      - pattern-regex: '["''`][^"''`\n]*#[0-9a-fA-F]{3,8}\b[^"''`\n]*["''`]'
+      - pattern-regex: '\b(?:rgba?|hsla?|hwb|oklab|oklch|lab|lch)\('
+      - pattern-regex: '(?i)\bfont-family\s*:|\bfontFamily\b'
+      - pattern-regex: '(?i)\bborder-radius\s*:\s*(?!0\b|var\()|\bborderRadius\b'

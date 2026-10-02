@@ -1,0 +1,46 @@
+name: Bug report
+description: The extension behaves differently from what it documents
+title: "[bug]: "
+labels: ["type/bug", "status/needs-triage"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      description: The file listing page where the icons are wrong or missing. Remove private repository names.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed
+      description: What happened.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+      description: What you expected instead.
+    validations:
+      required: true
+  - type: input
+    id: safari
+    attributes:
+      label: Safari version
+      description: From Safari, About Safari.
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Glyphmark version
+      description: The version shown in Safari Settings, Extensions.
+    validations:
+      required: true

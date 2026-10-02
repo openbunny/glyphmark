@@ -1,0 +1,6 @@
+{
+  "Exclude": ["(^|/)tests/fixtures/", "(^|/)build/", "\\.xcodeproj/"],
+  "Disable": {
+    "MaxLineLength": true
+  }
+}

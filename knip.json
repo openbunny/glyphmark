@@ -1,0 +1,24 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "include": [
+    "exports",
+    "types",
+    "duplicates",
+    "unresolved",
+    "files",
+    "dependencies",
+    "unlisted",
+    "binaries",
+    "enumMembers",
+    "namespaceMembers",
+    "cycles"
+  ],
+  "entry": [
+    "src/content/main.ts",
+    "src/options/main.ts",
+    "src/popup/main.ts",
+    "src/**/*.test.ts",
+    "tests/**/*.test.ts"
+  ],
+  "project": ["src/**/*.ts", "tests/**/*.ts"]
+}

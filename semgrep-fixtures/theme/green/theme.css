@@ -1,0 +1,9 @@
+a {
+  color: var(--foreground);
+  border-radius: 0;
+  font: inherit;
+  background: var(--paper);
+  font-size: var(--text-body);
+  padding: var(--space-2) var(--space-3);
+  margin: 0 auto;
+}

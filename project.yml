@@ -1,0 +1,103 @@
+name: Glyphmark
+options:
+  deploymentTarget:
+    macOS: "15.0"
+  createIntermediateGroups: true
+packages:
+  OpenBunnyTheme:
+    path: ../openbunny-theme
+configs:
+  Debug: debug
+  Release: release
+configFiles:
+  Debug: Signing.xcconfig
+  Release: SigningRelease.xcconfig
+settings:
+  base:
+    APP_BUNDLE_ID: io.github.openbunny.glyphmark
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
+    MARKETING_VERSION: 0.1.0
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "6"
+    SWIFT_STRICT_CONCURRENCY: complete
+    OTHER_SWIFT_FLAGS: -strict-memory-safety
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+    GCC_TREAT_WARNINGS_AS_ERRORS: YES
+    ENABLE_APP_SANDBOX: YES
+    ENABLE_HARDENED_RUNTIME: YES
+targets:
+  Glyphmark:
+    type: application
+    platform: macOS
+    sources:
+      - path: App/PrivacyInfo.xcprivacy
+      - path: App/Sources/App
+      - path: App/Sources/Model
+      - path: App/Sources/SafariShim
+      - path: App/Resources
+    settings:
+      base:
+        PRODUCT_NAME: Glyphmark
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID)
+        INFOPLIST_FILE: App/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_ENTITLEMENTS: App/App.entitlements
+        SWIFT_OBJC_BRIDGING_HEADER: App/Sources/SafariShim/Glyphmark-Bridging-Header.h
+    dependencies:
+      - target: GlyphmarkExtension
+        embed: true
+      - package: OpenBunnyTheme
+        product: OpenBunnyTheme
+      - package: OpenBunnyTheme
+        product: OpenBunnyUI
+    scheme:
+      testTargets:
+        - GlyphmarkTests
+      preActions:
+        - name: Require DEVELOPMENT_TEAM for a Release build
+          settingsTarget: Glyphmark
+          script: |
+            if [ "$CONFIGURATION" = Release ] && [ -z "$DEVELOPMENT_TEAM" ]; then
+              echo "error: Glyphmark: DEVELOPMENT_TEAM is unset. Copy DeveloperTeam.xcconfig.example to DeveloperTeam.xcconfig and set DEVELOPMENT_TEAM." >&2
+              exit 1
+            fi
+  GlyphmarkExtension:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Extension/PrivacyInfo.xcprivacy
+      - path: Extension/Sources
+      - path: Resources
+        buildPhase: resources
+        excludes:
+          - "**/*.ts"
+          - "content"
+          - "generated"
+      - path: Resources/content
+        type: folder
+      - path: Resources/generated
+        type: folder
+    settings:
+      base:
+        PRODUCT_NAME: Glyphmark Extension
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).extension
+        INFOPLIST_FILE: Extension/Info.plist
+        SKIP_INSTALL: YES
+        CODE_SIGN_ENTITLEMENTS: Extension/Extension.entitlements
+  GlyphmarkTests:
+    type: bundle.unit-test
+    platform: macOS
+    dependencies:
+      - target: Glyphmark
+      - package: OpenBunnyTheme
+        product: OpenBunnyTheme
+    sources:
+      - path: AppTests
+      - path: App/Sources/Model
+      - path: App/Sources/SafariShim
+    settings:
+      base:
+        TEST_HOST: ""
+        BUNDLE_LOADER: ""
+        SWIFT_OBJC_BRIDGING_HEADER: App/Sources/SafariShim/Glyphmark-Bridging-Header.h

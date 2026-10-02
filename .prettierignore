@@ -1,0 +1,10 @@
+Resources/content/
+Resources/generated/
+Resources/options.js
+Resources/popup.js
+src/generated/
+DerivedData/
+build/
+*.xcodeproj/
+coverage/
+node_modules/
