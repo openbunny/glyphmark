@@ -37,16 +37,23 @@ cpSync(join(root, "src/generated/icons"), join(generated, "icons"), {
   recursive: true,
 })
 
-const theme = join(root, "node_modules/@openbunny/theme")
+const themeCss = dirname(
+  fileURLToPath(import.meta.resolve("@openbunny/theme/css/tokens.css"))
+)
+const themeFonts = dirname(
+  fileURLToPath(
+    import.meta.resolve("@openbunny/theme/fonts/OFL-CourierPrime.txt")
+  )
+)
 const themeStyles = ["tokens", "extension-aliases", "extension-base", "fonts"]
 
 for (const name of themeStyles) {
   cpSync(
-    join(theme, "css", `${name}.css`),
+    join(themeCss, `${name}.css`),
     join(generated, "theme/css", `${name}.css`)
   )
 }
-cpSync(join(theme, "fonts"), join(generated, "theme/fonts"), {
+cpSync(themeFonts, join(generated, "theme/fonts"), {
   recursive: true,
 })
 

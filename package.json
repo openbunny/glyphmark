@@ -27,8 +27,8 @@
     "lint": "eslint .",
     "format": "prettier --check .",
     "pretest": "bun run build",
-    "test": "bun test",
-    "test:coverage": "bun run generate && bun test --coverage",
+    "test": "bun test src tests",
+    "test:coverage": "bun run generate && bun test src tests --coverage",
     "preknip": "bun run generate",
     "knip": "knip",
     "licenses": "license-checker-rseidelsohn --production --excludePrivatePackages --onlyAllow \"MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause;(BSD-3-Clause AND Apache-2.0)\"",
@@ -37,7 +37,7 @@
     "lint:html": "html-validate 'Resources/*.html'"
   },
   "dependencies": {
-    "@openbunny/theme": "file:../openbunny-theme/packages/web",
+    "@openbunny/theme": "github:openbunny/theme#422c5b1cb8cd642324bc39d74079d4cee05dae69",
     "material-icon-theme": "5.38.1",
     "zod": "4.5.4"
   },

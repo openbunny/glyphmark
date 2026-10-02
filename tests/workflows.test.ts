@@ -14,11 +14,14 @@ describe("unsigned CI", () => {
 
   test("runs on pull_request and builds with signing disabled", () => {
     expect(ci).toMatch(/^ {2}pull_request:/m)
-    expect(ci).toContain('CODE_SIGNING_ALLOWED: "NO"')
+    expect(ci).toContain("reusable-check.yml@")
+    expect(
+      readFileSync(join(import.meta.dirname, "..", "justfile"), "utf8")
+    ).toContain("CODE_SIGNING_ALLOWED=NO")
   })
 
-  test("references no secret but THEME_READ_TOKEN and no environment", () => {
-    expect(ci).not.toMatch(/secrets\.(?!THEME_READ_TOKEN\b)/)
+  test("references no secret and no environment", () => {
+    expect(ci).not.toContain("secrets.")
     expect(ci).not.toMatch(/^\s*environment:/m)
     expect(ci).not.toContain("secrets: inherit")
   })
@@ -50,6 +53,7 @@ describe("release workflow", () => {
       "DEVELOPMENT_TEAM",
       "NOTARY_API_KEY_P8",
       "NOTARY_API_KEY_ID",
+      "NOTARY_API_ISSUER_ID",
     ])
       expect(release).toContain(`secrets.${name}`)
   })
@@ -68,11 +72,11 @@ describe("release workflow", () => {
     )
   })
 
-  test("no job outside the signing job reads a secret but THEME_READ_TOKEN", () => {
+  test("no job outside the signing job reads a secret", () => {
     const beforeSigning = release.slice(
       0,
       release.indexOf("  sign-notarize-publish:")
     )
-    expect(beforeSigning).not.toMatch(/secrets\.(?!THEME_READ_TOKEN\b)/)
+    expect(beforeSigning).not.toContain("secrets.")
   })
 })

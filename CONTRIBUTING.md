@@ -26,8 +26,8 @@ How to build, test and submit a change to `glyphmark`.
   fails with `projectNotGenerated` until the project exists.
 - Every pull request is gated by these workflows: `ci.yml`, `dco.yml`,
   `gitleaks.yml`, `reuse.yml`, `security.yml` and `zizmor.yml`.
-- Colours, fonts, sizes and radii come from `openbunny-theme`, checked out next
-  to this repository. `just semgrep-theme` and `just stylelint` reject a colour, font, radius,
+- Colours, fonts, sizes and radii come from the pinned theme dependency.
+  `just semgrep-theme` and `just stylelint` reject a colour, font, radius,
   font-size or spacing literal.
 - A new provider ships a fixture under `tests/fixtures` holding markup
   structure only, with placeholder repository names, and a test against it.

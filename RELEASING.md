@@ -10,9 +10,8 @@ version.
 ## Pipeline
 
 `ci.yml` runs on `pull_request` and `push`. It builds unsigned with
-`CODE_SIGNING_ALLOWED=NO` and has no environment. It reads the repository
-secret `THEME_READ_TOKEN` to check out `openbunny/theme` beside the workspace,
-so a fork pull request fails at that step until the theme is published.
+`CODE_SIGNING_ALLOWED=NO` and has no environment. The theme dependencies use a
+public Git commit, so a fork pull request needs no repository secret to build.
 
 `release.yml` runs on a `v*` tag. It runs `ci.yml`, the security, gitleaks and
 REUSE workflows and the tag-version check. The `sign-notarize-publish` job then
@@ -40,12 +39,9 @@ Nothing is published in either case.
    - `DEVELOPMENT_TEAM`: the Apple team ID.
    - `NOTARY_API_KEY_P8`: the App Store Connect API key as base64.
    - `NOTARY_API_KEY_ID`: the key ID.
-   - `NOTARY_API_ISSUER_ID`: the issuer ID. Set it for a Team key and leave it
-     unset for an Individual key.
-3. Set the repository secret `THEME_READ_TOKEN` to a token with read access to
-   `openbunny/theme`. Remove it and the `checkout-theme` action after the
-   theme is published and the dependencies point at published versions.
-4. Set `RELEASE_PLEASE_TOKEN` to a token that can trigger workflows. A tag
+   - `NOTARY_API_ISSUER_ID`: the issuer ID of a Team key. [Individual keys cannot
+     use notarytool](https://developer.apple.com/documentation/AppStoreConnectAPI/creating-api-keys-for-app-store-connect-api).
+3. Set `RELEASE_PLEASE_TOKEN` to a token that can trigger workflows. A tag
    pushed with `GITHUB_TOKEN` does not start `release.yml`.
 
 ## Platform floor

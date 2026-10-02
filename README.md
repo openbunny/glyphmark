@@ -99,16 +99,10 @@ show the icons.
 
 ## Theme
 
-Colours, fonts, sizes and radii come from the OpenBunny theme library at
-`../openbunny-theme`. The companion app links the SwiftPM products
-`OpenBunnyTheme` and `OpenBunnyUI` through a local path in `project.yml`. The
-extension pages and the build link the npm package `@openbunny/theme` through
-a `file:` dependency in `package.json`. Both dependencies must resolve from a
-checkout of `openbunny-theme` next to this one.
-
-The theme library is unpublished. After its first release, `project.yml` and
-`package.json` switch from the local paths to the published versions. That
-switch is pending.
+Colours, fonts, sizes and radii come from the OpenBunny theme library.
+`project.yml` and `package.json` pin the same theme Git commit for Swift and
+TypeScript. After a theme release, replace both Git dependencies with pinned
+package versions.
 
 `bun run build` copies the package's CSS and fonts into `Resources/generated/theme`.
 The extension pages bundle the fonts and load them from the extension origin.
