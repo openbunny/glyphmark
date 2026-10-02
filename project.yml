@@ -1,7 +1,7 @@
 name: Glyphmark
 options:
   deploymentTarget:
-    macOS: "15.0"
+    macOS: '15.0'
   createIntermediateGroups: true
 packages:
   OpenBunnyTheme:
@@ -16,16 +16,16 @@ configFiles:
 settings:
   base:
     APP_BUNDLE_ID: io.github.openbunny.glyphmark
-    MACOSX_DEPLOYMENT_TARGET: "15.0"
-    MARKETING_VERSION: 0.1.0
-    CURRENT_PROJECT_VERSION: "1"
-    SWIFT_VERSION: "6"
+    MACOSX_DEPLOYMENT_TARGET: '15.0'
+    MARKETING_VERSION: 0.2.0
+    CURRENT_PROJECT_VERSION: '1'
+    SWIFT_VERSION: '6'
     SWIFT_STRICT_CONCURRENCY: complete
-    OTHER_SWIFT_FLAGS: -strict-memory-safety
-    SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
-    GCC_TREAT_WARNINGS_AS_ERRORS: YES
-    ENABLE_APP_SANDBOX: YES
-    ENABLE_HARDENED_RUNTIME: YES
+    OTHER_SWIFT_FLAGS: '-strict-memory-safety'
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: 'YES'
+    GCC_TREAT_WARNINGS_AS_ERRORS: 'YES'
+    ENABLE_APP_SANDBOX: 'YES'
+    ENABLE_HARDENED_RUNTIME: 'YES'
 targets:
   Glyphmark:
     type: application
@@ -58,8 +58,9 @@ targets:
       preActions:
         - name: Require DEVELOPMENT_TEAM for a Release build
           settingsTarget: Glyphmark
-          script: |
-            if [ "$CONFIGURATION" = Release ] && [ -z "$DEVELOPMENT_TEAM" ]; then
+          script: >
+            if [ "$CONFIGURATION" = Release ] && [ -z "$DEVELOPMENT_TEAM" ];
+            then
               echo "error: Glyphmark: DEVELOPMENT_TEAM is unset. Copy DeveloperTeam.xcconfig.example to DeveloperTeam.xcconfig and set DEVELOPMENT_TEAM." >&2
               exit 1
             fi
@@ -72,9 +73,9 @@ targets:
       - path: Resources
         buildPhase: resources
         excludes:
-          - "**/*.ts"
-          - "content"
-          - "generated"
+          - '**/*.ts'
+          - content
+          - generated
       - path: Resources/content
         type: folder
       - path: Resources/generated
@@ -84,7 +85,7 @@ targets:
         PRODUCT_NAME: Glyphmark Extension
         PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).extension
         INFOPLIST_FILE: Extension/Info.plist
-        SKIP_INSTALL: YES
+        SKIP_INSTALL: 'YES'
         CODE_SIGN_ENTITLEMENTS: Extension/Extension.entitlements
   GlyphmarkTests:
     type: bundle.unit-test
@@ -99,6 +100,6 @@ targets:
       - path: App/Sources/SafariShim
     settings:
       base:
-        TEST_HOST: ""
-        BUNDLE_LOADER: ""
+        TEST_HOST: ''
+        BUNDLE_LOADER: ''
         SWIFT_OBJC_BRIDGING_HEADER: App/Sources/SafariShim/Glyphmark-Bridging-Header.h

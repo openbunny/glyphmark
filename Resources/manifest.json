@@ -1,10 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Glyphmark",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Material Icon Theme glyphs for source-hosting sites, as a Safari web extension.",
   "homepage_url": "https://github.com/openbunny/glyphmark",
-  "permissions": ["storage"],
+  "permissions": [
+    "storage"
+  ],
   "host_permissions": [
     "https://github.com/*",
     "https://bitbucket.org/*",
@@ -49,7 +51,9 @@
         "https://codeberg.org/*",
         "https://tangled.org/*"
       ],
-      "js": ["content/main.js"],
+      "js": [
+        "content/main.js"
+      ],
       "run_at": "document_idle",
       "all_frames": false
     }
