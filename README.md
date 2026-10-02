@@ -1,7 +1,7 @@
 # Glyphmark
 
-> **Work in progress.** No release exists yet. Names, identifiers and
-> interfaces can change without notice.
+This is a developer project. Build and run it locally; there is no distribution
+or release process.
 
 Glyphmark is a Safari web extension for macOS. It replaces the file and folder
 icons on source-hosting file listings with Material Icon Theme glyphs. A
