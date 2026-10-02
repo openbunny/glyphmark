@@ -51,7 +51,7 @@ struct ProjectConfigurationTests {
     #expect(try ProjectYAML.scalar(forKey: key) == "YES")
   }
 
-  @Test("signing identities are xcconfig values, separate for Debug and Release")
+  @Test("Debug and Release use the development signing xcconfig")
   func sandboxedExtensionRequiresTeamIdentityFromXcconfig() throws {
     let project = try String(contentsOf: ProjectFile.url("project.yml"), encoding: .utf8)
     #expect(!project.contains("DEVELOPMENT_TEAM:"))
@@ -59,7 +59,7 @@ struct ProjectConfigurationTests {
     #expect(!project.contains("PROVISIONING_PROFILE"))
     #expect(!project.contains("CODE_SIGN_IDENTITY"))
     #expect(project.contains("Debug: Signing.xcconfig"))
-    #expect(project.contains("Release: SigningRelease.xcconfig"))
+    #expect(project.contains("Release: Signing.xcconfig"))
 
     let signing = try String(contentsOf: ProjectFile.url("Signing.xcconfig"), encoding: .utf8)
     #expect(signing.contains("CODE_SIGN_IDENTITY = Apple Development"))
@@ -67,15 +67,6 @@ struct ProjectConfigurationTests {
     #expect(signing.contains("CODE_SIGNING_REQUIRED = YES"))
     #expect(signing.contains("#include? \"DeveloperTeam.xcconfig\""))
     #expect(!signing.contains("DEVELOPMENT_TEAM"))
-
-    let release = try String(
-      contentsOf: ProjectFile.url("SigningRelease.xcconfig"), encoding: .utf8)
-    #expect(release.contains("CODE_SIGN_IDENTITY = Developer ID Application"))
-    #expect(release.contains("CODE_SIGN_STYLE = Manual"))
-    #expect(release.contains("CODE_SIGNING_REQUIRED = YES"))
-    #expect(release.contains("#include? \"DeveloperTeam.xcconfig\""))
-    #expect(!release.contains("Apple Development"))
-    #expect(!release.contains("DEVELOPMENT_TEAM"))
 
     let gitignore = try String(
       contentsOf: ProjectFile.url(".gitignore"), encoding: .utf8)

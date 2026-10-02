@@ -43,10 +43,6 @@ enum XcodeBuildSettings {
   }
 }
 
-private func signingIdentity(_ configuration: String) -> String {
-  configuration == "Release" ? "Developer ID Application" : "Apple Development"
-}
-
 @Suite
 struct EffectiveBuildSettingsTests {
   @Test(
@@ -64,7 +60,7 @@ struct EffectiveBuildSettingsTests {
     #expect(settings["MACOSX_DEPLOYMENT_TARGET"] == "15.0")
     #expect(settings["PRODUCT_BUNDLE_IDENTIFIER"] == settings["APP_BUNDLE_ID"])
     #expect(settings["APP_BUNDLE_ID"]?.isEmpty == false)
-    #expect(settings["CODE_SIGN_IDENTITY"] == signingIdentity(configuration))
+    #expect(settings["CODE_SIGN_IDENTITY"] == "Apple Development")
     #expect(settings["CODE_SIGNING_REQUIRED"] == "YES")
   }
 
@@ -82,7 +78,7 @@ struct EffectiveBuildSettingsTests {
     #expect(settings["OTHER_SWIFT_FLAGS"]?.contains("-strict-memory-safety") == true)
     #expect(settings["PRODUCT_BUNDLE_IDENTIFIER"] == "\(settings["APP_BUNDLE_ID"] ?? "").extension")
     #expect(settings["APP_BUNDLE_ID"]?.isEmpty == false)
-    #expect(settings["CODE_SIGN_IDENTITY"] == signingIdentity(configuration))
+    #expect(settings["CODE_SIGN_IDENTITY"] == "Apple Development")
     #expect(settings["CODE_SIGNING_REQUIRED"] == "YES")
   }
 }

@@ -12,7 +12,7 @@ configs:
   Release: release
 configFiles:
   Debug: Signing.xcconfig
-  Release: SigningRelease.xcconfig
+  Release: Signing.xcconfig
 settings:
   base:
     APP_BUNDLE_ID: io.github.openbunny.glyphmark

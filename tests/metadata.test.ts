@@ -20,13 +20,6 @@ describe("release metadata", () => {
     expect(match?.[1]).toBe(pkg.version)
   })
 
-  test.if(process.env["RELEASE_TAG"] !== undefined)(
-    "the release tag names the package version",
-    () => {
-      expect(process.env["RELEASE_TAG"]).toBe(`v${pkg.version}`)
-    }
-  )
-
   test("both Info.plists take their version from build settings", () => {
     for (const path of ["App/Info.plist", "Extension/Info.plist"]) {
       const plist = read(path)

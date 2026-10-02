@@ -58,8 +58,8 @@ not.
 ## Version
 
 `package.json` holds the version. `Resources/manifest.json` and
-`MARKETING_VERSION` in `project.yml` follow it, and release-please updates all
-three. `tests/metadata.test.ts` fails when they differ.
+`MARKETING_VERSION` in `project.yml` follow it.
+`tests/metadata.test.ts` fails when they differ.
 
 ## Swift
 
@@ -148,16 +148,14 @@ describes it in the same commit.
 
 ## Signing
 
-Debug signs with Apple Development through `Signing.xcconfig`; a free Personal
-Team in `DeveloperTeam.xcconfig` is enough. Release signs with Developer ID
-Application through `SigningRelease.xcconfig`, and a signed Release build fails
-with a message naming `DEVELOPMENT_TEAM` when it is unset. Both xcconfig files
-include `DeveloperTeam.xcconfig`, which `.gitignore` excludes. `DeveloperTeam.xcconfig.example`
-is the template. No development team, signing certificate or provisioning
-profile is committed; every gate builds with `CODE_SIGNING_ALLOWED=NO`. Both
-targets bundle `PrivacyInfo.xcprivacy`, and `AppTests/PrivacyManifestTests`
-inspects the built products. Only `.github/workflows/release.yml`, in its
-`release` environment, reads signing secrets. Safari
+Debug and Release use Apple Development through `Signing.xcconfig`; a free
+Personal Team in `DeveloperTeam.xcconfig` is enough. A signed build fails with
+a message naming `DEVELOPMENT_TEAM` when it is unset. `.gitignore` excludes
+`DeveloperTeam.xcconfig`; `DeveloperTeam.xcconfig.example` is the template.
+No development team, signing certificate or provisioning profile is committed;
+every gate builds with `CODE_SIGNING_ALLOWED=NO`. Both targets bundle
+`PrivacyInfo.xcprivacy`, and `AppTests/PrivacyManifestTests` inspects the built
+products. Safari
 keys the extension by bundle identifier in machine-global state, so one session
 at a time builds, launches or registers it.
 

@@ -72,24 +72,10 @@ Set `DEVELOPMENT_TEAM` in `DeveloperTeam.xcconfig` to the team ID, then run
 `just install-app`. `DeveloperTeam.xcconfig` is gitignored, and a semgrep rule
 rejects a committed team ID.
 
-The Release configuration signs with Developer ID Application, which needs a
-paid Apple Developer Program team. `SigningRelease.xcconfig` holds the
-identity. A Release build with signing enabled and no `DEVELOPMENT_TEAM` fails
-with `DEVELOPMENT_TEAM is unset`.
-
-## Releases
-
-A tagged release publishes a Developer ID signed, notarized and stapled
-`Glyphmark-<tag>.zip` and its SHA-256 checksum to the GitHub release.
-`RELEASING.md` describes the workflow and the secrets it needs.
-
-Safari 18.4 or later is required to load a Developer ID signed extension on
-macOS. The app deploys to macOS 15.0, and a macOS 15.0 system runs an older
-Safari until it is updated. Apple states the Safari 18.4 support in
-[this forum thread](https://developer.apple.com/forums/thread/782005). A
-source build signed with Apple Development has no such floor. Whether a
-notarized build loads without Develop > Allow Unsigned Extensions has not been
-measured on this project.
+Debug and Release both use Apple Development signing with a free Personal Team.
+A signed build with no `DEVELOPMENT_TEAM` fails with
+`DEVELOPMENT_TEAM is unset`. This repository has no distribution workflow.
+The supported Safari floor has not been measured on device.
 
 The extension adds no `data-*` attribute to any element and loads its icons as
 `data:` URLs. It inserts an `<img>` element after each replaced element and sets
@@ -136,4 +122,4 @@ are renders of it.
 
 [CONTRIBUTING.md](CONTRIBUTING.md) covers the workflow, [SECURITY.md](SECURITY.md)
 the vulnerability process, and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) the
-conduct rules. [RELEASING.md](RELEASING.md) lists the owner-only release steps.
+conduct rules.
