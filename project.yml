@@ -6,7 +6,7 @@ options:
 packages:
   OpenBunnyTheme:
     url: https://github.com/openbunny/theme.git
-    revision: 422c5b1cb8cd642324bc39d74079d4cee05dae69
+    revision: c5b65658879ae49f7a92ac8f6623b1aaab08da99
 configs:
   Debug: debug
   Release: release

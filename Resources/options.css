@@ -125,6 +125,7 @@ button:hover {
 
 .visually-hidden {
   position: absolute;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- Screen-reader-only content needs a one-pixel box. */
   width: 1px;
   height: 1px;
   overflow: hidden;

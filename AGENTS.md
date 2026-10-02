@@ -36,12 +36,9 @@ This repository defines no colour, font, size or radius. Swift takes them from
 `OpenBunnyTheme` and `OpenBunnyUI`, TypeScript from `@openbunny/theme/tokens`,
 and CSS from the theme's custom properties. A change to a value goes to
 `openbunny-theme`. `just semgrep-theme` covers Swift and TypeScript colour,
-font, radius and spacing literals, and `just stylelint` covers CSS colour,
-font, radius, font-size, padding, margin and gap literals. Widths and heights
-are unchecked: `Resources/popup.css` sets the popup width and
-`App/Sources/App/ContentView.swift` sets the window minimum width, because the
-theme defines no width token. Both move to the theme when it gains one. HTML
-and SVG artwork are unchecked. The app icon is artwork and carries its own
+font, radius and spacing literals, plus Swift frame width literals.
+`just stylelint` covers CSS colour, font, radius, font-size, padding, margin,
+gap and width literals. Heights, HTML and SVG artwork are unchecked. The app icon carries its own
 palette. `just theme-accent` fails when the accent colour set differs from the
 theme's, and `just icons-check` fails when an icon differs from a render of
 `artwork/app-icon.svg`. The gates fail when their target set

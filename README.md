@@ -110,11 +110,8 @@ If a font file fails to register, the app window shows the failure and falls
 back to the system font; extension pages fall back to the generic `monospace`
 family. The window pins the theme's light colour scheme. Text pairs keep a
 contrast ratio of at least 4.5:1, which holds under Increase Contrast.
-`just semgrep-theme` and `just stylelint` fail on a colour, font-family, radius,
-font-size or spacing literal outside the theme. Widths are the exception: the
-popup width in `Resources/popup.css` and the window minimum width in
-`App/Sources/App/ContentView.swift` are literals until the theme defines a
-width token.
+`just semgrep-theme` and `just stylelint` fail on colour, font-family, radius,
+font-size, spacing or width literals outside the theme.
 
 ## Bundle identifiers
 

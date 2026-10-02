@@ -248,6 +248,7 @@ semgrep-fixtures-selftest:
     swift-theme-font-literal semgrep-fixtures/theme/red/literals.swift 3
     swift-theme-radius-literal semgrep-fixtures/theme/red/literals.swift 2
     swift-theme-spacing-literal semgrep-fixtures/theme/red/literals.swift 3
+    swift-theme-width-literal semgrep-fixtures/theme/red/literals.swift 2
     ts-theme-literal semgrep-fixtures/theme/red/literals.ts 5
     EOF
     while read -r rule want; do
@@ -261,7 +262,7 @@ semgrep-fixtures-selftest:
     color-no-hex 1
     function-disallowed-list 1
     color-named 1
-    declaration-property-value-disallowed-list 6
+    declaration-property-value-disallowed-list 7
     EOF
     check .semgrep-theme.yml ANY semgrep-fixtures/theme/green/theme.swift 0
     bunx stylelint semgrep-fixtures/theme/green/theme.css || fail=1

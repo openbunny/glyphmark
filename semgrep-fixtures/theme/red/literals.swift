@@ -11,6 +11,8 @@ struct Literals: View {
       .background(Color(white: 0.5))
       .padding(12)
       .padding(.horizontal, 8)
+      .frame(minWidth: 280)
+      .frame(width: 280)
     VStack(spacing: 4) {}
   }
 

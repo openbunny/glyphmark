@@ -37,7 +37,7 @@
     "lint:html": "html-validate 'Resources/*.html'"
   },
   "dependencies": {
-    "@openbunny/theme": "github:openbunny/theme#422c5b1cb8cd642324bc39d74079d4cee05dae69",
+    "@openbunny/theme": "github:openbunny/theme#c5b65658879ae49f7a92ac8f6623b1aaab08da99",
     "material-icon-theme": "5.38.1",
     "zod": "4.5.4"
   },

@@ -6,4 +6,5 @@ a {
   font-size: var(--text-body);
   padding: var(--space-2) var(--space-3);
   margin: 0 auto;
+  width: var(--width-popup);
 }

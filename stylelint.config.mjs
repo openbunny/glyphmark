@@ -21,6 +21,7 @@ export default {
       "/^font-family$/": ["/^(?!var\\()/"],
       "/^font$/": ["/^(?!inherit$|var\\()/"],
       "/-radius$/": ["/^(?!0$|var\\()/"],
+      "/^(?:min-|max-)?width$/": ["/^(?!var\\()/"],
       "/^(font-size|gap|(padding|margin)(-.+)?)$/": [
         "/^(?!(?:0|auto|inherit|var\\([^)]*\\)|\\s)+$)/",
       ],

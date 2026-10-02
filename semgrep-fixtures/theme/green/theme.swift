@@ -9,6 +9,7 @@ struct Themed: View {
       .foregroundStyle(Color.muted)
       .background(Rectangle().fill(Color.paperDeep))
       .padding(Spacing.page)
+      .frame(minWidth: WindowWidth.windowMinimum)
     VStack(spacing: Spacing.loose) {}
   }
 }

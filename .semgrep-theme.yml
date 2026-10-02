@@ -60,6 +60,22 @@ rules:
       - metavariable-regex:
           metavariable: $N
           regex: "^[0-9.]+$"
+  - id: swift-theme-width-literal
+    languages: [swift]
+    severity: ERROR
+    message: >-
+      A numeric SwiftUI frame width. Read window widths from OpenBunnyTheme WindowWidth values.
+    paths:
+      exclude:
+        - "/AppTests/**"
+    patterns:
+      - pattern-either:
+          - pattern: "$V.frame(width: $N)"
+          - pattern: "$V.frame(minWidth: $N)"
+          - pattern: "$V.frame(maxWidth: $N)"
+      - metavariable-regex:
+          metavariable: $N
+          regex: "^[0-9.]+$"
   - id: ts-theme-literal
     languages: [typescript]
     severity: ERROR

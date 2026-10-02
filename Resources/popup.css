@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  width: 18rem;
+  width: var(--width-popup);
   font-size: var(--text-body);
 }
 

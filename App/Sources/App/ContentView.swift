@@ -27,7 +27,7 @@ struct ContentView: View {
       }
     }
     .padding(Spacing.page)
-    .frame(minWidth: 280)
+    .frame(minWidth: WindowWidth.windowMinimum)
     .task { await model.refresh() }
   }
 
