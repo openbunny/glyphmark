@@ -212,10 +212,9 @@ url_api = "https://api.github.com/repos/suzuki-shunsuke/pinact/releases/assets/4
 provenance = "github-attestations"
 
 [[tools.semgrep]]
-version = "1.178.0"
+version = "1.186.0"
 backend = "pypi:semgrep"
-specifiers = ["1.178.0"]
-uv = { path = ".mise/locks/semgrep/1.178.0", digest = "sha256:d3d1753c464b3df38861d6cfe5e61f27147839c7704c16b15075ca294e28ec8f" }
+specifiers = ["1.186.0"]
 
 [[tools.swiftlint]]
 version = "0.65.1"
