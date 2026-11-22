@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@openbunny/theme": "github:openbunny/theme#c5b65658879ae49f7a92ac8f6623b1aaab08da99",
-    "material-icon-theme": "5.38.1",
+    "material-icon-theme": "5.40.0",
     "zod": "4.5.4"
   },
   "devDependencies": {
